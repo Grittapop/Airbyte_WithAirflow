@@ -25,7 +25,7 @@ x-airflow-common:
     - ./mnt/tests:/opt/airflow/tests
     - ./mnt/logs:/opt/airflow/logs
     - ./mnt/plugins:/opt/airflow/plugins
-  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
+  user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
     airflow-metastore:
@@ -183,7 +183,9 @@ services:
     ports:
       - 1025:1025
       - 8025:8025
-
+  
+ 
 volumes:
   airflow-metastore-data-volume:
   postgres-data-volume:
+  
